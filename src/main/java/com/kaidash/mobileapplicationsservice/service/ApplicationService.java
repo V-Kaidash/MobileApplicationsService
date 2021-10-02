@@ -38,7 +38,7 @@ public class ApplicationService {
         return "Application with ID " + applicationId + " deleted successfully";
     }
 
-    public int getContentRateCount(int contentRate) {
-        return applicationRepository.getContentRateCount(contentRate);
+    public int getContentRateCount(int contentRateId) {
+        return applicationRepository.getContentRateCount(contentRateId);
     }
 }
