@@ -15,6 +15,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
     public List<Application> findApplicationsById(List<Integer> applicationIds);
 
     @Query(nativeQuery = true,
-            value = "SELECT COUNT(*) FROM applications WHERE content_rate=(:contentRate)")
-    int getContentRateCount(int contentRate);
+            value = "SELECT COUNT(*) FROM applications WHERE content_rate=(:contentRateId)")
+    int getContentRateCount(int contentRateId);
 }
