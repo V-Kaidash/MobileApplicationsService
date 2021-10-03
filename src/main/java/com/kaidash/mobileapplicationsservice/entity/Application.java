@@ -16,7 +16,7 @@ public class Application {
     @Column(name = "id")
     private int id;
 
-    @Pattern(regexp = "^\\S+.+\\S+$",message = "Application name shouln't start with whitespace character")
+    @Pattern(regexp = "^\\S+.+\\S+$",message = "Application name shouln't start or end with whitespace character")
     @NotNull(message = "Application name is required")
     @Size(min = 1, max = 128, message = "Application name is required")
     @Column(name = "app_name")

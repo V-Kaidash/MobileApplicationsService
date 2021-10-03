@@ -1,44 +1,23 @@
 package com.kaidash.mobileapplicationsservice.service;
 
 import com.kaidash.mobileapplicationsservice.entity.Application;
-import com.kaidash.mobileapplicationsservice.repository.ApplicationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.kaidash.mobileapplicationsservice.entity.ApplicationIdsComparisonRequest;
+import com.kaidash.mobileapplicationsservice.entity.ApplicationProcessingResponse;
+import com.kaidash.mobileapplicationsservice.entity.ContentRateEntity;
 import java.util.List;
 
-@Service
-public class ApplicationService {
+public interface ApplicationService {
 
-    private final ApplicationRepository applicationRepository;
+    public List<Application> findAll();
 
-    @Autowired
-    public ApplicationService(ApplicationRepository applicationRepository) {
-        this.applicationRepository = applicationRepository;
-    }
+    public ApplicationProcessingResponse findApplicationsByIdAndCompareVersions(ApplicationIdsComparisonRequest applicationIdsComparisonRequest);
 
-    public List<Application> findAll(){
-        return applicationRepository.findAll();
-    }
+    public Application findApplicationById(int applicationId);
 
-    public List<Application> findApplicationsById(List<Integer> id){
-        return applicationRepository.findApplicationsById(id);
-    }
+    public ApplicationProcessingResponse saveApplication(Application application);
 
-    public Application showApplicationById(int applicationId) {
-        return applicationRepository.findById(applicationId).get();
-    }
+    public ApplicationProcessingResponse deleteApplicationById(int applicationId);
 
-    public void saveApplication(Application application) {
-        applicationRepository.save(application);
-    }
+    public ContentRateEntity getContentRateCount();
 
-    public String deleteApplicationById(int applicationId) {
-        applicationRepository.deleteById(applicationId);
-        return "Application with ID " + applicationId + " deleted successfully";
-    }
-
-    public int getContentRateCount(int contentRateId) {
-        return applicationRepository.getContentRateCount(contentRateId);
-    }
 }

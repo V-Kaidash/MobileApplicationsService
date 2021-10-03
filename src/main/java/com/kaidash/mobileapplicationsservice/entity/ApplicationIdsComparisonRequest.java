@@ -2,13 +2,13 @@ package com.kaidash.mobileapplicationsservice.entity;
 
 import java.util.List;
 
-public class ApplicationComparisonEntity {
+public class ApplicationIdsComparisonRequest {
 
     private List<Integer> id = null;
 
-    public ApplicationComparisonEntity(){}
+    public ApplicationIdsComparisonRequest(){}
 
-    public ApplicationComparisonEntity(List<Integer> id) {
+    public ApplicationIdsComparisonRequest(List<Integer> id) {
         this.id = id;
     }
 
