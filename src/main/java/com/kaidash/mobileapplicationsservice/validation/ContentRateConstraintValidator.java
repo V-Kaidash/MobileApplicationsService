@@ -1,8 +1,5 @@
 package com.kaidash.mobileapplicationsservice.validation;
 
-
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;

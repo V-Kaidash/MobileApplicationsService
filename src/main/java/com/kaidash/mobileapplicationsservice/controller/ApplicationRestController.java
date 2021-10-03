@@ -1,21 +1,16 @@
 package com.kaidash.mobileapplicationsservice.controller;
 
 import com.kaidash.mobileapplicationsservice.entity.Application;
-import com.kaidash.mobileapplicationsservice.entity.ApplicationComparisonEntity;
+import com.kaidash.mobileapplicationsservice.entity.ApplicationIdsComparisonRequest;
 import com.kaidash.mobileapplicationsservice.entity.ApplicationProcessingResponse;
 import com.kaidash.mobileapplicationsservice.entity.ContentRateEntity;
 import com.kaidash.mobileapplicationsservice.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import static com.kaidash.mobileapplicationsservice.controller.EndPoints.*;
 
@@ -90,10 +85,10 @@ public class ApplicationRestController {
      */
     @PostMapping(APPLICATIONS_COMPARISON)
     public ResponseEntity<ApplicationProcessingResponse> compareApplicationsByVersion(
-            @RequestBody ApplicationComparisonEntity applicationComparisonEntity){
+            @RequestBody ApplicationIdsComparisonRequest applicationIdsComparisonRequest){
 
         ApplicationProcessingResponse applicationProcessingResponse = applicationService
-                                            .findApplicationsByIdAndCompareVersions(applicationComparisonEntity);
+                                            .findApplicationsByIdAndCompareVersions(applicationIdsComparisonRequest);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -101,7 +96,7 @@ public class ApplicationRestController {
     }
 
     /**
-     * Stat data about amount of applications with specified content rate.
+     * Statistic data about amount of applications with specified content rate.
      *
      * @return stats by content rate and HttpStatus 'OK'
      */

@@ -14,7 +14,7 @@ import javax.persistence.EntityNotFoundException;
 public class ApplicationRestExceptionHandler {
 
     /**
-     * Exception handler for validation MethodArgumentNotValidException
+     * Exception handler for MethodArgumentNotValidException
      *
      * @return error response in JSON
      */

@@ -1,19 +1,15 @@
 package com.kaidash.mobileapplicationsservice.service;
 
 import com.kaidash.mobileapplicationsservice.entity.Application;
-import com.kaidash.mobileapplicationsservice.entity.ApplicationComparisonEntity;
+import com.kaidash.mobileapplicationsservice.entity.ApplicationIdsComparisonRequest;
 import com.kaidash.mobileapplicationsservice.entity.ApplicationProcessingResponse;
 import com.kaidash.mobileapplicationsservice.entity.ContentRateEntity;
 import com.kaidash.mobileapplicationsservice.repository.ApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -26,10 +22,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         this.applicationRepository = applicationRepository;
     }
 
+    @Override
     public List<Application> findAll(){
         return applicationRepository.findAll();
     }
 
+    @Override
     public Application findApplicationById(int applicationId) {
 
         Optional<Application> applicationOptional = applicationRepository.findById(applicationId);
@@ -39,6 +37,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         return applicationOptional.get();
     }
 
+    @Override
     public ApplicationProcessingResponse saveApplication(Application application) {
 
             Optional<Application> duplicatedApplication = applicationRepository
@@ -57,6 +56,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             return applicationProcessingResponse;
     }
 
+    @Override
     public ApplicationProcessingResponse deleteApplicationById(int applicationId) {
 
         Optional<Application> applicationOptional = applicationRepository.findById(applicationId);
@@ -72,10 +72,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         return applicationProcessingResponse;
     }
 
+    @Override
     public ApplicationProcessingResponse findApplicationsByIdAndCompareVersions(
-                                                ApplicationComparisonEntity applicationComparisonEntity){
+                                                ApplicationIdsComparisonRequest applicationIdsComparisonRequest){
 
-        List<Integer> applicationIdList = applicationComparisonEntity.getId();
+        List<Integer> applicationIdList = applicationIdsComparisonRequest.getId();
 
         List<Application> applications = applicationRepository.findApplicationsById(applicationIdList);
 
@@ -108,6 +109,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         return applicationProcessingResponse;
     }
 
+    @Override
     public ContentRateEntity getContentRateCount() {
 
         ContentRateEntity contentRateEntity = new ContentRateEntity();
