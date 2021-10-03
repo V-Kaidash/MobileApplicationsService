@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
@@ -17,4 +18,8 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
     @Query(nativeQuery = true,
             value = "SELECT COUNT(*) FROM applications WHERE content_rate=(:contentRateId)")
     int getContentRateCount(int contentRateId);
+
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM applications WHERE app_name = (:applicationName) AND version = (:applicationVersion)")
+    Optional<Application> findApplicationByNameAndVersion(String applicationName, String applicationVersion);
 }

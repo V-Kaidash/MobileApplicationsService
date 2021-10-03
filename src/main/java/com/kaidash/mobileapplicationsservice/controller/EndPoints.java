@@ -1,6 +1,9 @@
 package com.kaidash.mobileapplicationsservice.controller;
 
-public class EndPoints {
+/**
+ * Endpoints for ApplicationRestController that point the route to certain method or class.
+ */
+public final class EndPoints {
 
     private EndPoints(){}
 
