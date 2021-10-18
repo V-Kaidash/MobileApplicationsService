@@ -52,9 +52,13 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${project.parent.version}</version>
+                <groupId>com.kaidash</groupId>
+                <artifactId>MobileApplicationsService</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
