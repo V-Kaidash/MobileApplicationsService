@@ -48,12 +48,11 @@ public class ApplicationServiceImpl implements ApplicationService {
             }
             applicationRepository.save(application);
 
-                ApplicationProcessingResponse applicationProcessingResponse = new ApplicationProcessingResponse(
-                    HttpStatus.CREATED.value(),
-                    String.format("Application [%s] (version: [%s]) was successfully saved",
-                            application.getName(), application.getVersion()),
-                    System.currentTimeMillis());
-            return applicationProcessingResponse;
+        return new ApplicationProcessingResponse(
+            HttpStatus.CREATED.value(),
+            String.format("Application [%s] (version: [%s]) was successfully saved",
+                    application.getName(), application.getVersion()),
+            System.currentTimeMillis());
     }
 
     @Override
@@ -66,10 +65,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         applicationRepository.deleteById(applicationId);
 
-        ApplicationProcessingResponse applicationProcessingResponse = new ApplicationProcessingResponse(HttpStatus.OK.value(),
+        return new ApplicationProcessingResponse(HttpStatus.OK.value(),
                 String.format("Application with id %s deleted successfully", applicationId), System.currentTimeMillis());
-
-        return applicationProcessingResponse;
     }
 
     @Override
@@ -101,12 +98,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         }
 
-        ApplicationProcessingResponse applicationProcessingResponse = new ApplicationProcessingResponse(
+        return new ApplicationProcessingResponse(
                 HttpStatus.OK.value(),
                 responseMessage,
                 System.currentTimeMillis());
-
-        return applicationProcessingResponse;
     }
 
     @Override
