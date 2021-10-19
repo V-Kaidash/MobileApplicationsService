@@ -113,7 +113,7 @@ public class ApplicationRestController {
      * @return list of applications and HttpStatus 'OK'
      */
     @GetMapping("cicdtest")
-    public ResponseEntity<List<Application>> showAll(){
+    public ResponseEntity<List<Application>> showAllTest(){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(applicationService.findAll());
