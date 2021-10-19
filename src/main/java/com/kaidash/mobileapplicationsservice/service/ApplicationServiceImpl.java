@@ -31,9 +31,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Application findApplicationById(int applicationId) {
 
         Optional<Application> applicationOptional = applicationRepository.findById(applicationId);
-        if(applicationOptional.isEmpty()) {
-            throw new EntityNotFoundException(String.format("Application id [%s] not found.", applicationId));
-        }
+//        if(applicationOptional.isEmpty()) {
+//            throw new EntityNotFoundException(String.format("Application id [%s] not found.", applicationId));
+//        }
         return applicationOptional.get();
     }
 
