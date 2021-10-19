@@ -106,4 +106,16 @@ public class ApplicationRestController {
                 .status(HttpStatus.OK)
                 .body(applicationService.getContentRateCount());
     }
+
+    /**
+     * FOR CI/CD TESTING ONLY Finds all applications.
+     *
+     * @return list of applications and HttpStatus 'OK'
+     */
+    @GetMapping("cicdtest")
+    public ResponseEntity<List<Application>> showAll(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(applicationService.findAll());
+    }
 }
