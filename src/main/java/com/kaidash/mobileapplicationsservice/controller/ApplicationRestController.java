@@ -107,4 +107,17 @@ public class ApplicationRestController {
                 .body(applicationService.getContentRateCount());
     }
 
+    /**
+     * Test heroku integration.
+     *
+     * @return list of applications and HttpStatus 'OK'
+     */
+    @GetMapping("test")
+    public ResponseEntity<List<Application>> showAllTest(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(applicationService.findAll());
+    }
+
+
 }
